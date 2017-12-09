@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
-public class StandardTaxPolicy implements TaxPolicy {
+public class DrugTaxPolicy implements TaxPolicy {
 
     public Tax calculateTax(RequestItem item) {
         Money net = item.getTotalCost();
@@ -12,9 +12,9 @@ public class StandardTaxPolicy implements TaxPolicy {
         String desc = null;
 
         switch (item.getProductData().getType()) {
-            case STANDARD:
-                ratio = BigDecimal.valueOf(0.23);
-                desc = "23%";
+            case DRUG:
+                ratio = BigDecimal.valueOf(0.05);
+                desc = "5% (D)";
                 break;
 
             default:
