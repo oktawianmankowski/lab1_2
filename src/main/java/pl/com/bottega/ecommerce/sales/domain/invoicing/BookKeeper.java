@@ -14,12 +14,12 @@ package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
 public class BookKeeper {
 
-    public Invoice issuance(InvoiceRequest requestData) {
+    public Invoice issuance(InvoiceRequest requestData, TaxPolicy taxPolicy) {
         Invoice invoice = InvoiceFactory.create(requestData.getClient());
 
         for (RequestItem item : requestData.getItems()) {
             InvoiceLine invoiceLine = new InvoiceLine(item.getProductData(), item.getQuantity(), item.getTotalCost(),
-                    TaxFactory.create(item));
+                    taxPolicy.calculateTax(item));
             invoice.addItem(invoiceLine);
         }
 

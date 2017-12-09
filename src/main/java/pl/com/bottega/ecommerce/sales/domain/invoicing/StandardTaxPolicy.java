@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
-public class TaxFactory {
+public class StandardTaxPolicy implements TaxPolicy {
 
-    static public Tax create(RequestItem item) {
+    public Tax calculateTax(RequestItem item) {
         Money net = item.getTotalCost();
         BigDecimal ratio = null;
         String desc = null;
@@ -33,5 +33,4 @@ public class TaxFactory {
 
         return new Tax(taxValue, desc);
     }
-
 }
