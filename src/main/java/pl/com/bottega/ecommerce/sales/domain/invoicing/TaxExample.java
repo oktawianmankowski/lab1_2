@@ -1,16 +1,16 @@
 package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
+import java.math.BigDecimal;
+
 import pl.com.bottega.ecommerce.sales.domain.productscatalog.ProductType;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
-
-import java.math.BigDecimal;
 
 public class TaxExample implements Taxable {
 
     private BigDecimal ratio = null;
     private String desc = null;
 
-    public Tax getTax(ProductType type, Money net) {
+    public Tax calculateTax(ProductType type, Money net) {
         switch (type) {
             case DRUG:
                 ratio = BigDecimal.valueOf(0.05);
