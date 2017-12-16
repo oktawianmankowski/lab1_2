@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 /**
- * 
+ *
  */
 package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
@@ -33,7 +33,7 @@ public class InvoiceLine {
 
 	private Tax tax;
 
-	InvoiceLine(ProductData product, int quantity, Money net, Tax tax) {
+	protected InvoiceLine(ProductData product, int quantity, Money net, Tax tax) {
 		this.product = product;
 		this.quantity = quantity;
 		this.net = net;

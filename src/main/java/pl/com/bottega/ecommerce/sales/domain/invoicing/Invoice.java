@@ -15,20 +15,17 @@
  */
 package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.ClientData;
+import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
+import pl.com.bottega.ecommerce.sales.domain.factories.InvoiceLineListFactory;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
-
-public class Invoice  {
-
+public class Invoice {
 
 	private ClientData client;
-
 
 	private Money net;
 
@@ -36,18 +33,18 @@ public class Invoice  {
 
 	private List<InvoiceLine> items;
 
-
 	private Id id;
 
-	Invoice(Id invoiceId, ClientData client) {
+	private InvoiceLineListFactory invoiceLineListFactory;
+
+	protected Invoice(Id invoiceId, ClientData client) {
 		this.id = invoiceId;
 		this.client = client;
-		this.items = new ArrayList<InvoiceLine>();
-		
+		this.items = invoiceLineListFactory.createInvoiceLineList();
+
 		this.net = Money.ZERO;
 		this.gros = Money.ZERO;
 	}
-	
 
 	public void addItem(InvoiceLine item) {
 		items.add(item);
@@ -57,7 +54,7 @@ public class Invoice  {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return immutable projection
 	 */
 	public List<InvoiceLine> getItems() {
