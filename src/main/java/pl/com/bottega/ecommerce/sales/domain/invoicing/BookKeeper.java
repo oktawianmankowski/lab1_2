@@ -15,13 +15,16 @@
  */
 package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
-import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
+import pl.com.bottega.ecommerce.sales.domain.factories.InvoiceFactory;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class BookKeeper {
 
+	InvoiceFactory invoiceFactory;
+
 	public Invoice issuance(InvoiceRequest invoiceRequest, TaxInterface taxInterface) {
-		Invoice invoice = new Invoice(Id.generate(), invoiceRequest.getClientData());
+
+		Invoice invoice = invoiceFactory.createInvoice(invoiceRequest.getClientData());
 
 		for (RequestItem item : invoiceRequest.getItems()) {
 			Money net = item.getTotalCost();
