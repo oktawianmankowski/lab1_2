@@ -27,7 +27,7 @@ public class Payment {
 
 	private Id aggregateId;
 
-	private PaymentFactory paymentFactory;
+	private PaymentFactory paymentFactory = new PaymentFactory();
 
 	protected Payment(Id aggregateId, ClientData clientData, Money amount) {
 		this.aggregateId = aggregateId;

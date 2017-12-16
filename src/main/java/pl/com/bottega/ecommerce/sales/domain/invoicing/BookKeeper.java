@@ -19,8 +19,8 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class BookKeeper {
 
-	InvoiceFactory invoiceFactory;
-	InvoiceLineFactory invoiceLineFactory;
+	InvoiceFactory invoiceFactory = new InvoiceFactory();
+	InvoiceLineFactory invoiceLineFactory = new InvoiceLineFactory();
 
 	public Invoice issuance(InvoiceRequest invoiceRequest, TaxInterface taxInterface) {
 
