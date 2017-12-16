@@ -17,7 +17,6 @@ package pl.com.bottega.ecommerce.sales.domain.payment;
 
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.ClientData;
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
-import pl.com.bottega.ecommerce.sales.domain.factories.PaymentFactory;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class Payment {
@@ -30,7 +29,7 @@ public class Payment {
 
 	private PaymentFactory paymentFactory;
 
-	public Payment(Id aggregateId, ClientData clientData, Money amount) {
+	protected Payment(Id aggregateId, ClientData clientData, Money amount) {
 		this.aggregateId = aggregateId;
 		this.clientData = clientData;
 		this.amount = amount;

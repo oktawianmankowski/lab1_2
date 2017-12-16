@@ -37,7 +37,7 @@ public class Invoice {
 
 	private InvoiceLineListFactory invoiceLineListFactory;
 
-	public Invoice(Id invoiceId, ClientData client) {
+	protected Invoice(Id invoiceId, ClientData client) {
 		this.id = invoiceId;
 		this.client = client;
 		this.items = invoiceLineListFactory.createInvoiceLineList();
