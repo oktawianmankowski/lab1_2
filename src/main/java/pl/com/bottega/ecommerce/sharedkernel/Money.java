@@ -12,11 +12,11 @@
  */
 package pl.com.bottega.ecommerce.sharedkernel;
 
+import org.fest.util.Objects;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Currency;
-
-import org.fest.util.Objects;
 
 public class Money {
 
@@ -28,7 +28,8 @@ public class Money {
 
     private String currencyCode;
 
-    protected Money() {}
+    protected Money() {
+    }
 
     public Money(BigDecimal denomination, Currency currency) {
         this(denomination, currency.getCurrencyCode());
@@ -72,8 +73,9 @@ public class Money {
     }
 
     public Money subtract(Money money) {
-        if (!compatibleCurrency(money))
+        if (!compatibleCurrency(money)) {
             throw new IllegalArgumentException("Currency mismatch");
+        }
 
         return new Money(denomination.subtract(money.denomination), determineCurrencyCode(money));
     }
@@ -91,7 +93,7 @@ public class Money {
 
     /**
      * @return currency from this object or otherCurrencyCode. Preferred is the one that comes from Money that has
-     *         non-zero value.
+     * non-zero value.
      */
     private Currency determineCurrencyCode(Money otherMoney) {
         String resultingCurrenctCode = isZero(denomination) ? otherMoney.currencyCode : currencyCode;
@@ -134,12 +136,15 @@ public class Money {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Money other = (Money) obj;
         return compatibleCurrency(other) && Objects.areEqual(denomination, other.denomination);
     }

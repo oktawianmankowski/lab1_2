@@ -12,14 +12,14 @@
  */
 package pl.com.bottega.ecommerce.sales.domain.purchase;
 
+import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.ClientData;
+import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
+import pl.com.bottega.ecommerce.sharedkernel.Money;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-
-import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.ClientData;
-import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
-import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class Purchase {
 
@@ -36,7 +36,8 @@ public class Purchase {
     private Id aggregateId;
 
     @SuppressWarnings("unused")
-    private Purchase() {}
+    private Purchase() {
+    }
 
     Purchase(Id aggregateId, ClientData clientData, List<PurchaseItem> items, Date purchaseDate, boolean paid,
             Money totalCost) {

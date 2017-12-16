@@ -1,9 +1,9 @@
 package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
-import java.math.BigDecimal;
-
 import pl.com.bottega.ecommerce.sales.domain.productscatalog.ProductType;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
+
+import java.math.BigDecimal;
 
 public class TaxExample implements Taxable {
 
