@@ -17,7 +17,7 @@ package pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage;
 
 
 
-public class ClientData {
+public class ClientData { 
 	
 	private Id aggregateId;
 	
