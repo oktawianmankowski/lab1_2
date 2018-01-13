@@ -15,6 +15,7 @@
  */
 package pl.com.bottega.ecommerce.sales.domain.payment;
 
+import com.sun.istack.internal.NotNull;
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.ClientData;
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
@@ -22,21 +23,17 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 public class Payment {
 
 	private ClientData clientData;
-
 	private Money amount;
-
 	private Id aggregateId;
+	private PaymentFactory paymentFactory = new PaymentFactory();
 
-
-	public Payment(Id aggregateId, ClientData clientData, Money amount) {
+	public Payment(@NotNull Id aggregateId,@NotNull ClientData clientData,@NotNull Money amount) {
 		this.aggregateId = aggregateId;
 		this.clientData = clientData;
 		this.amount = amount;
 	}
 
 	public Payment rollBack() {
-		Id id = Id.generate();
-
-		return new Payment(id, clientData, amount.multiplyBy(-1));		
+		return paymentFactory.createPayment(clientData, amount.multiplyBy(-1));
 	}
 }
