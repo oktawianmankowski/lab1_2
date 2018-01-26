@@ -27,7 +27,6 @@ public class Payment {
 
 	private Id aggregateId;
 
-
 	public Payment(Id aggregateId, ClientData clientData, Money amount) {
 		this.aggregateId = aggregateId;
 		this.clientData = clientData;
@@ -37,6 +36,6 @@ public class Payment {
 	public Payment rollBack() {
 		Id id = Id.generate();
 
-		return new Payment(id, clientData, amount.multiplyBy(-1));		
+		return new Payment(id, clientData, amount.multiplyBy(-1));
 	}
 }

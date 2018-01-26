@@ -15,13 +15,14 @@
  */
 package pl.com.bottega.ecommerce.sharedkernel;
 
+import org.fest.util.Objects;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Currency;
 
-import org.fest.util.Objects;
-
 public class Money {
+
 	public static final Currency DEFAULT_CURRENCY = Currency.getInstance("EUR");
 
 	public static final Money ZERO = new Money(BigDecimal.ZERO);
@@ -94,7 +95,7 @@ public class Money {
 
 	/**
 	 * @return currency from this object or otherCurrencyCode. Preferred is the
-	 *         one that comes from Money that has non-zero value.
+	 * one that comes from Money that has non-zero value.
 	 */
 	private Currency determineCurrencyCode(Money otherMoney) {
 		String resultingCurrenctCode = isZero(denomination) ? otherMoney.currencyCode : currencyCode;
