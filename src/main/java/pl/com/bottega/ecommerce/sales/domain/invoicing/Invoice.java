@@ -56,10 +56,7 @@ public class Invoice  {
 		gros = gros.add(item.getGros());
 	}
 
-	/**
-	 * 
-	 * @return immutable projection
-	 */
+
 	public List<InvoiceLine> getItems() {
 		return Collections.unmodifiableList(items);
 	}
